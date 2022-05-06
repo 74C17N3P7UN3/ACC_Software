@@ -702,12 +702,12 @@ bool dangerZone(void)
     {
         printf("Si desidera eliminare il programma? (Y/N): ");
         c = getchar();
+        c = tolower(c);
         getchar();
         if (c != 'y' && c != 'n')
             printf("Errore! Inserire una scelta valida!\n");
     } while (c != 'y' && c != 'n');
 
-    c = tolower(c);
     if (c == 'y')
     {
         for (i = 1; i < 6; i++)
