@@ -685,7 +685,7 @@ void utentiSort(char nome[][DimStr], char pwd[][DimStr], int dim)
 }
 void portfolioModifica(float *portfolio)
 {
-    printf("Attualmente i fondi ammontanto a: %.2f", *portfolio);
+    printf("Attualmente i fondi ammontanto a: %.2f$", *portfolio);
     printf("\nA quanto li vuoi impostare? ");
     scanf("%f", &(*portfolio));
 
@@ -771,13 +771,20 @@ void contattiCrea(char nome[][DimStr], char mail[][DimStr], int type[], char pro
         for (i = 0; i < strlen(temp); i++)
             temp[i] = tolower(temp[i]);
 
-        if (strcmp(temp, "cliente") == 0)
+        if (strcmp(temp, "cliente") == 0 || strcmp(temp, "c") == 0)
+        {
             type[*dim] = 1;
-        else if (strcmp(temp, "fornitore") == 0)
+            flag = true;
+        }
+        else if (strcmp(temp, "fornitore") == 0 || strcmp(temp, "f") == 0)
+        {
             type[*dim] = 2;
+            flag = true;
+        }
         else
             printf("Errore!\n");
-    } while (strcmp(temp, "cliente") != 0 && strcmp(temp, "fornitore") != 0);
+    } while (!flag);
+    flag = false;
 
     do
     {
